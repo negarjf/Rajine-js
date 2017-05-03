@@ -1,6 +1,205 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
-<body>
-<p> hello world </p>
-</body>
+	<head>
+		
+
+		<!-- bootstap CSS  -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	
+
+		<link  type="text/css" rel="stylesheet"  href="style.css">
+
+		<!-- Jquery -->
+		<script
+		  src="https://code.jquery.com/jquery-3.2.1.min.js"
+		  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+		  crossorigin="anonymous"></script>
+
+		  <!-- Font Awesome -->
+		<script src="https://use.fontawesome.com/f4fcfb493d.js"></script>
+		
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta charset="UTF-8">
+	</head>
+	<body dir='rtl' lang="ar">
+		<div class="container-fluid">
+			<div class="main">
+			<form class=" borderLine">
+
+			<fieldset>
+				<legend>ورودی</legend>
+				<div class="row">
+					<div class="col-sm-4 form-group">
+						<label for="planDens">تراکم</label>
+						<input value="" type="number" class="form-control" id="planDens" required="required">
+					</div>
+					<div class="col-sm-4 form-group">
+						<label for="planHeight">طول نقشه</label>
+						<input value="" type="number" class="form-control" id="planHeight" placeholder="به سانتیمتر" required="required">
+					</div>
+					<div class="col-sm-4 form-group">
+						<label for="planWidth">عرض نقشه</label>
+						<input value="" type="number" class="form-control" id="planWidth" placeholder="به سانتیمتر" required="required">
+					</div>
+				</div>
+				
+				<div class='row'>
+					<div class="col-sm-6 form-group">
+						<label for="planBorder">نوع حاشیه</label>
+						<select class="form-control" id="planBorder">
+							<option data-open='false'>بدون زنجیره</option>
+							<option data-open='true'>با زنجیره</option>
+						</select>
+					</div>
+					
+					<div class="col-sm-6 form-group">
+						<label for="planRatio">نوع نقشه</label>
+						<select class="form-control" id="planRatio">
+							<option data-ratio='0.5,0.5'>یک چهارم</option>
+							<option data-ratio='0.5,1'>یک دوم</option>
+							<option data-ratio='1,1'>سراسری</option>
+							
+						</select>
+					</div>
+				</div>
+				<div class='row'>
+					<div class="col-sm-6 form-group">
+						<label for="planUnit">واحد محاسبه</label>
+						<input value='7' type="number" class="form-control" id="planUnit" disabled>
+					</div>
+					<div class="col-sm-6 form-group">
+						<label for="planType">نوع بافت</label>
+						<select class="form-control" id="planType">
+							<option data-unit='7'>متقارن (ترکی باف)</option>
+							<option data-unit='6.5'>نامتقارن (فارسی بافت)</option>
+							<option data-unit='6.75'>نامتقارن (کرمان)</option>
+							<option data-unit='10'>ماشینی</option>
+						</select>
+					</div>
+				</div>
+				</fieldset>
+				<div class="row centering">
+					<button class="btn btn-primary cal-btn">محاسبه</button>
+				</div>
+			</form>
+			
+			<div class="results borderLine">
+				<h3>
+					خروجی
+				</h3>
+				<div class="row resA">
+					<div class="col-xs-4">
+						<p><span class="resNum"></span>در طول</p>
+					</div>
+					<div class="col-xs-4">
+						<p>
+							<span class="resNum"></span>در عرض
+						</p>
+					</div>
+					<div class="col-xs-4">
+						<p  class="resProp">تعداد واحد:</p>
+					</div>
+				</div>
+				<div class="row resB">
+					<div class="col-xs-4">
+						<p><span class="resNum"></span>عرض</p>
+						<p><span class="resNum"></span>طول</p>
+					</div>
+					<div class="col-xs-4">
+						<p>
+							<span class="resNum"></span>عرض
+						</p>
+						<p>
+							<span class="resNum"></span>طول
+						</p>
+					</div>
+					<div class="col-xs-4">
+						<p  class="resProp">اندازه نقشه:</p>
+					</div>
+				</div>
+				<div class="row resC">
+					<div class="col-xs-4">
+						<p><span class="resNum"></span>px/inch</p>
+					</div>
+					<div class="col-xs-4">
+						<p>
+							<span class="resNum"></span>px/cm
+						</p>
+					</div>
+					<div class="col-xs-4">
+						<p  class="resProp">Dpi:</p>
+					</div>
+				</div>
+				<div class="row resD">
+					<div class="col-xs-4">
+						<p><span class="resNum"></span>متن</p>
+					</div>
+					<div class="col-xs-4">
+						<p>
+							<span class="resNum"></span>حاشیه
+						</p>
+					</div>
+					<div class="col-xs-4">
+						<p  class="resProp">اجزاء نقشه:</p>
+					</div>
+				</div>
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>عنوان</th>
+							<th>تعداد پیکسل</th>
+							<th>تعداد</th>
+							<th>جمع پیکسل هر جزء</th>
+						</tr>
+					</thead>
+					<tbody id='tableData'>
+						<tr>
+							<th>اندازه حاشیه پهن</th>
+							<td></td>
+							<td>1</td>
+							<td></td>
+						</tr>
+						<tr>
+							<th>اندازه حاشیه باریک</th>
+							<td></td>
+							<td>2</td>
+							<td></td>
+						</tr>
+						<tr id='BorderRow'>
+							<th>اندازه زنجیره</th>
+							<td></td>
+							<td>4</td>
+							<td></td>
+						</tr>
+						<tr>
+							<th>اندازه هر میل (حمیل)</th>
+							<td></td>
+							<td>4</td>
+							<td></td>
+						</tr>
+						<tr>
+							<th>اندازه ساده بافی (لوار)</th>
+							<td></td>
+							<td>1</td>
+							<td></td>
+						</tr>
+						<tr>
+							<th>جمع کل اجزاء و پیکسل های حاشیه</th>
+							<td></td>
+							<td></td>
+							<td id='Total'></td>
+						</tr>
+					</tbody>
+					
+				</table>
+			</div>
+			</div>
+		</div>
+
+		<script type="text/javascript" src="js.js"></script>
+
+	</body>
 </html>
