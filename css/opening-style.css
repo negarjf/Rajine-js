@@ -18,13 +18,15 @@ body {
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
-	/*background: #333;*/
 }
-@media (min-width: 768px){
+/*@media (min-width: 768px){
 	.site-wrapper-inner {
     vertical-align: middle;
 	}
-}
+}*/
+.site-wrapper-inner {
+    vertical-align: middle;
+	}
 	
 .site-wrapper-inner {
     display: table-cell;
@@ -32,6 +34,7 @@ body {
 }
 .cover-container {
 	background: rgba(0, 0, 0, 0.6);
+	padding:0;
     margin-right: auto;
     margin-left: auto;
 }
@@ -45,4 +48,10 @@ body {
 }
 .cover p.lead{
 	padding-bottom: 20px;
+}
+
+@media(max-width: 425px){
+	.cover h1{
+		font-size:100px;
+	}
 }

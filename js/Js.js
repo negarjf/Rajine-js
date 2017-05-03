@@ -1,28 +1,28 @@
 $(function(){
 
 		//Input variables
-		var $DensInput = $('#planDens'),
-			$HeightInput = $('#planHeight'),
-			$WidthInput = $('#planWidth'),
-			$Unit = $('#planUnit'),
+		var $densInput = $('#planDens'),
+			$heightInput = $('#planHeight'),
+			$widthInput = $('#planWidth'),
+			$unit = $('#planUnit'),
 		//Group A results
 			$resA = $('.resA span'),
-			$AWidth = $resA.eq(1),
-			$AHeight = $resA.eq(0),
+			$aWidth = $resA.eq(1),
+			$aHeight = $resA.eq(0),
 		//Group B results
 			$resB = $('.resB span'),
-			$BWidth_px = $resB.eq(0),
-			$BHeight_px = $resB.eq(1),
-			$BWidth_cm = $resB.eq(2),
-			$BHeight_cm = $resB.eq(3),
+			$bWidth_px = $resB.eq(0),
+			$bHeight_px = $resB.eq(1),
+			$bWidth_cm = $resB.eq(2),
+			$bHeight_cm = $resB.eq(3),
 		//Group C results
 			$resC = $('.resC span'),
-			$CInch = $resC.eq(0),
-			$CCm = $resC.eq(1),
+			$cInch = $resC.eq(0),
+			$cCm = $resC.eq(1),
 		//Group D results
 			$resD = $('.resD span'),
-			$DBorder = $resD.eq(1),
-			$DMain = $resD.eq(0),
+			$dBorder = $resD.eq(1),
+			$dMain = $resD.eq(0),
 		//Table Cells
 			$tr = $('#tableData>tr'),
 			$td = $tr.children('td'),
@@ -42,31 +42,31 @@ $(function(){
 
 		$('form button.cal-btn').on('click',function(event){
 			event.preventDefault();
-			var DensValue = $DensInput.val(),
-				HeightValue = $HeightInput.val(),
-				WidthValue = $WidthInput.val(),
-				Unit = $Unit.val(),
-				Ratio = $('select#planRatio option:checked').data('ratio'),
-				Border = $('select#planBorder option:checked').data('open');
+			var densValue = $densInput.val(),
+				heightValue = $heightInput.val(),
+				widthValue = $widthInput.val(),
+				unit = $unit.val(),
+				ratio = $('select#planRatio option:checked').data('ratio'),
+				border = $('select#planBorder option:checked').data('open');
 
 
 			//calculation
 
-			var AWidth = ( WidthValue/Unit ).toFixed(1),
-				AHeight = ( HeightValue/Unit ).toFixed(1),
-				RatioArrey = Ratio.split(','),
-				BWidth_cm = Math.round( WidthValue*(RatioArrey[0]) ),
-				BHeight_cm = Math.round( HeightValue*(RatioArrey[1]) ),
-				BWidth_px = Math.round( AWidth*DensValue*(RatioArrey[0]) ),
-				BHeight_px = Math.round( AHeight*DensValue*(RatioArrey[1]) ),
-				CCm = ( DensValue/Unit ).toFixed(2),
-				CInch = (CCm*2/54).toFixed(2),
-				DBorder = Math.round(BWidth_px/3),
-				DMain = BWidth_px - DBorder,
-				td5 = Math.round( DBorder/21 ),
+			var aWidth = ( widthValue/unit ).toFixed(1),
+				aHeight = ( heightValue/unit ).toFixed(1),
+				ratioArrey = ratio.split(','),
+				bWidth_cm = Math.round( widthValue*(ratioArrey[0]) ),
+				bHeight_cm = Math.round( heightValue*(ratioArrey[1]) ),
+				bWidth_px = Math.round( aWidth*densValue*(ratioArrey[0]) ),
+				bHeight_px = Math.round( aHeight*densValue*(ratioArrey[1]) ),
+				cCm = ( densValue/unit ).toFixed(2),
+				cInch = (cCm*2/54).toFixed(2),
+				dBorder = Math.round(bWidth_px/3),
+				dMain = bWidth_px - dBorder,
+				td5 = Math.round( dBorder/21 ),
 				sum = 0;
 				
-				if( Border == 'false'){
+				if( border == 'false'){
 					var td2 = (td5*4),
 						td3 = 0,
 						td4 = 3;
@@ -76,19 +76,19 @@ $(function(){
 						td4 = 2;
 				}
 
-				var td1 = (DBorder-(td2*2)-(td3*4)-(td4*4)-td5);
+				var td1 = (dBorder-(td2*2)-(td3*4)-(td4*4)-td5);
 
 
-				$AWidth.html(AWidth);
-				$AHeight.html(AHeight);
-				$BWidth_cm.html(BWidth_cm+'cm');
-				$BHeight_cm.html(BHeight_cm + 'cm');
-				$BWidth_px.html(BWidth_px + 'px');
-				$BHeight_px.html( BHeight_px + 'px' );
-				$CCm.html( CCm );
-				$CInch.html(CInch);
-				$DBorder.html(DBorder + 'px');
-				$DMain.html(DMain + 'px');
+				$aWidth.html(aWidth);
+				$aHeight.html(aHeight);
+				$bWidth_cm.html(bWidth_cm+'cm');
+				$bHeight_cm.html(bHeight_cm + 'cm');
+				$bWidth_px.html(bWidth_px + 'px');
+				$bHeight_px.html( bHeight_px + 'px' );
+				$cCm.html( cCm );
+				$cInch.html(cInch);
+				$dBorder.html(dBorder + 'px');
+				$dMain.html(dMain + 'px');
 				$td5.html(td5);
 				$td4.html(td4);
 				$td3.html(td3);
@@ -102,7 +102,7 @@ $(function(){
 						col3 = eval(col1*col2);
 					$this.children('td').eq(2).html(col3);
 					sum += col3;
-					$('#Total').html(sum);
+					$('#total').html(sum);
 				});
 
 
