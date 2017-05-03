@@ -47,7 +47,7 @@ $(function(){
 				widthValue = $widthInput.val(),
 				unit = $unit.val(),
 				ratio = $('select#planRatio option:checked').data('ratio'),
-				border = $('select#planBorder option:checked').data('open');
+				Border = $('select#planBorder option:checked').data('open');
 
 
 			//calculation
@@ -60,13 +60,13 @@ $(function(){
 				bWidth_px = Math.round( aWidth*densValue*(ratioArrey[0]) ),
 				bHeight_px = Math.round( aHeight*densValue*(ratioArrey[1]) ),
 				cCm = ( densValue/unit ).toFixed(2),
-				cInch = (cCm*2/54).toFixed(2),
+				cInch = (cCm*2.54).toFixed(2),
 				dBorder = Math.round(bWidth_px/3),
 				dMain = bWidth_px - dBorder,
 				td5 = Math.round( dBorder/21 ),
 				sum = 0;
 				
-				if( border == 'false'){
+				if( Border === false){
 					var td2 = (td5*4),
 						td3 = 0,
 						td4 = 3;
@@ -94,6 +94,7 @@ $(function(){
 				$td3.html(td3);
 				$td2.html(td2);
 				$td1.html(td1);
+				console.log(Border);
 
 				$tr.each(function(){
 					var $this = $(this),
