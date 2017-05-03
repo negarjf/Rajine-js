@@ -34,7 +34,7 @@ $(function(){
 
 
 
-		$('select#planType').on('click',function(){
+		$('select#planType').on('change',function(){
 
 			$('#planUnit').val($(this).children('option:checked').data('unit'));
 
@@ -94,7 +94,7 @@ $(function(){
 				$td3.html(td3);
 				$td2.html(td2);
 				$td1.html(td1);
-				console.log(Border);
+				
 
 				$tr.each(function(){
 					var $this = $(this),
